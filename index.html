@@ -8,81 +8,131 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --bg:#07070c;
+  --card: rgba(255,255,255,0.04);
+  --stroke: rgba(255,255,255,0.08);
+  --text:#fff;
+  --muted:#8a8a8a;
+  --accent:#ff0055;
+  --accent2:#7a2cff;
+}
+
+*{box-sizing:border-box}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #0a0a0f;
-  color: #fff;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  overflow: hidden;
 }
 
-/* subtle glow background like premium landing pages */
+/* premium gradient glow background */
 .bg {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(255,0,80,0.12), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(120,0,255,0.10), transparent 40%);
+    radial-gradient(circle at 20% 20%, rgba(255,0,85,0.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(122,44,255,0.12), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(0,200,255,0.08), transparent 50%);
+  filter: blur(0px);
   z-index: -1;
 }
 
-/* main card */
+/* floating noise */
+.bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity:0.05;
+}
+
+/* card */
 .card {
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
   text-align: center;
-  padding: 30px 22px;
+  padding: 34px 22px;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform: translateY(10px);}
+  to{opacity:1; transform: translateY(0);}
 }
 
 /* title */
 h1 {
-  font-size: 34px;
+  font-size: 38px;
   margin: 0;
   letter-spacing: 1px;
+  background: linear-gradient(90deg, #fff, #aaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
   margin-top: 8px;
-  color: #888;
+  color: var(--muted);
   font-size: 13px;
 }
 
-/* buttons */
+/* buttons container */
 .links {
-  margin-top: 25px;
+  margin-top: 26px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-a {
-  text-decoration: none;
-}
+/* base button */
+a { text-decoration: none; }
 
 .btn {
   padding: 14px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #fff;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  color: var(--text);
   font-weight: 500;
-  transition: 0.2s;
-  backdrop-filter: blur(10px);
+  transition: 0.25s ease;
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* hover glow line */
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transition: 0.5s;
+}
+
+.btn:hover::before{
+  left:100%;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255,0,80,0.5);
-  box-shadow: 0 0 20px rgba(255,0,80,0.15);
+  transform: translateY(-3px);
+  border-color: rgba(255,0,85,0.4);
+  box-shadow: 0 0 25px rgba(255,0,85,0.12);
 }
 
-/* primary button */
+/* primary */
 .primary {
-  background: rgba(255,0,80,0.12);
-  border: 1px solid rgba(255,0,80,0.35);
+  background: linear-gradient(135deg, rgba(255,0,85,0.18), rgba(122,44,255,0.12));
+  border: 1px solid rgba(255,0,85,0.35);
 }
 
 /* footer */
@@ -101,7 +151,7 @@ footer {
 <div class="card">
 
   <h1>qTOUGH</h1>
-  <div class="subtitle">Streamer Hub • Minimal Landing</div>
+  <div class="subtitle">Streamer Hub • Ultra Minimal</div>
 
   <div class="links">
 
@@ -117,8 +167,9 @@ footer {
       TikTok
     </a>
 
+    <!-- 🔥 renamed block -->
     <a class="btn" href="https://bohpts.com/register?ref=Tough" target="_blank">
-      BoHpts x7 Referral
+      BoHpts Referal Link
     </a>
 
   </div>
