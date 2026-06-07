@@ -11,7 +11,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #0b0b0f;
+  background: #0a0a0f;
   color: #fff;
   display: flex;
   align-items: center;
@@ -19,29 +19,40 @@ body {
   min-height: 100vh;
 }
 
-/* контейнер */
+/* subtle glow background like premium landing pages */
+.bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,0,80,0.12), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(120,0,255,0.10), transparent 40%);
+  z-index: -1;
+}
+
+/* main card */
 .card {
   width: 100%;
   max-width: 420px;
   text-align: center;
-  padding: 30px 20px;
+  padding: 30px 22px;
 }
 
-/* ник */
+/* title */
 h1 {
-  font-size: 32px;
-  margin-bottom: 6px;
+  font-size: 34px;
+  margin: 0;
   letter-spacing: 1px;
 }
 
-p {
+.subtitle {
+  margin-top: 8px;
   color: #888;
-  margin-bottom: 25px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
-/* кнопки */
+/* buttons */
 .links {
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -53,33 +64,30 @@ a {
 
 .btn {
   padding: 14px;
-  border-radius: 10px;
-  background: #16161d;
-  border: 1px solid #222;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
   color: #fff;
   font-weight: 500;
   transition: 0.2s;
+  backdrop-filter: blur(10px);
 }
 
 .btn:hover {
-  background: #1f1f2a;
-  border-color: #333;
   transform: translateY(-2px);
+  border-color: rgba(255,0,80,0.5);
+  box-shadow: 0 0 20px rgba(255,0,80,0.15);
 }
 
-/* акцент */
-.btn.primary {
-  background: #ff0055;
-  border: none;
+/* primary button */
+.primary {
+  background: rgba(255,0,80,0.12);
+  border: 1px solid rgba(255,0,80,0.35);
 }
 
-.btn.primary:hover {
-  background: #ff1a66;
-}
-
-/* низ */
+/* footer */
 footer {
-  margin-top: 25px;
+  margin-top: 22px;
   font-size: 11px;
   color: #555;
 }
@@ -88,26 +96,28 @@ footer {
 
 <body>
 
+<div class="bg"></div>
+
 <div class="card">
 
   <h1>qTOUGH</h1>
-  <p>Streamer • Lineage 2</p>
+  <div class="subtitle">Streamer Hub • Minimal Landing</div>
 
   <div class="links">
 
-    <a href="https://t.me/ToughL2" target="_blank" class="btn primary">
+    <a class="btn primary" href="https://t.me/ToughL2" target="_blank">
       Telegram Channel
     </a>
 
-    <a href="https://www.youtube.com/@qTOUGH" target="_blank" class="btn">
-      YouTube
+    <a class="btn" href="https://www.youtube.com/@ToughW8" target="_blank">
+      YouTube Channel
     </a>
 
-    <a href="https://www.tiktok.com/@qtough" target="_blank" class="btn">
+    <a class="btn" href="https://www.tiktok.com/@qtough" target="_blank">
       TikTok
     </a>
 
-    <a href="https://bohpts.com/register?ref=Tough" target="_blank" class="btn">
+    <a class="btn" href="https://bohpts.com/register?ref=Tough" target="_blank">
       BoHpts x7 Referral
     </a>
 
