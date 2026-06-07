@@ -3,145 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>qTOUGH</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<title>qTOUGH Live</title>
 
 <style>
-:root{
-  --bg:#07070c;
-  --card: rgba(255,255,255,0.04);
-  --stroke: rgba(255,255,255,0.08);
-  --text:#fff;
-  --muted:#8a8a8a;
-  --accent:#ff0055;
-}
-
-*{box-sizing:border-box}
-
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
+  font-family: Arial;
+  background: #0b0b0f;
+  color: white;
 }
 
-.bg {
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255,0,85,0.15), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(122,44,255,0.12), transparent 45%);
-  z-index: -1;
-}
-
-.card {
-  width: 100%;
-  max-width: 520px;
+/* header */
+.header {
   text-align: center;
-  padding: 34px 22px;
+  padding: 20px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
-h1 {
-  font-size: 38px;
-  margin: 0;
-  background: linear-gradient(90deg, #fff, #aaa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* layout */
+.wrapper {
+  display: flex;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
-.subtitle {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* STREAM */
+/* stream */
 .stream {
-  margin-top: 22px;
-  width: 100%;
+  flex: 2;
   aspect-ratio: 16/9;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 0 30px rgba(255,0,85,0.08);
+  border: 1px solid #222;
 }
 
-iframe {
+.stream iframe {
   width: 100%;
   height: 100%;
   border: none;
 }
 
-/* buttons */
-.links {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+/* chat */
+.chat {
+  flex: 1;
+  min-width: 320px;
+  height: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #222;
 }
 
-a { text-decoration: none; }
-
-.btn {
-  padding: 14px;
-  border-radius: 14px;
-  background: var(--card);
-  border: 1px solid var(--stroke);
-  color: var(--text);
-  transition: 0.25s;
+.chat iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255,0,85,0.4);
-}
-
-.primary {
-  background: rgba(255,0,85,0.15);
-  border: 1px solid rgba(255,0,85,0.35);
+/* mobile */
+@media (max-width: 900px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .chat {
+    height: 450px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
+<div class="header">qTOUGH • LIVE STREAM</div>
 
-<div class="card">
+<div class="wrapper">
 
-  <h1>qTOUGH</h1>
-  <div class="subtitle">Live Stream Hub</div>
-
-  <!-- 🔴 YOUR YOUTUBE LIVE STREAM -->
+  <!-- STREAM -->
   <div class="stream">
-    <iframe
+    <iframe id="ytStream"
       src="https://www.youtube.com/embed/F5EKjldpBno"
       allowfullscreen>
     </iframe>
   </div>
 
-  <div class="links">
-
-    <a class="btn primary" href="https://t.me/ToughL2" target="_blank">
-      Телеграм канал
-    </a>
-
-    <a class="btn" href="https://www.youtube.com/@ToughW8" target="_blank">
-      YouTube Channel
-    </a>
-
-    <a class="btn" href="https://www.tiktok.com/@qtough" target="_blank">
-      TikTok
-    </a>
-
-    <a class="btn" href="https://bohpts.com/register?ref=Tough" target="_blank">
-      BoHpts Referal Link
-    </a>
-
+  <!-- CHAT -->
+  <div class="chat">
+    <iframe id="ytChat"
+      src="https://www.youtube.com/live_chat?v=F5EKjldpBno&embed_domain=yourname.github.io">
+    </iframe>
   </div>
 
 </div>
