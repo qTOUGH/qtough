@@ -3,130 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Streamer Page</title>
+<title>qTOUGH</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background: radial-gradient(circle at top, #1b1b1b, #000);
-  color: white;
-  text-align: center;
+  font-family: 'Inter', sans-serif;
+  background: #0b0b0f;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-/* фоновые линии */
-.bg {
-  position: fixed;
+/* контейнер */
+.card {
   width: 100%;
-  height: 100%;
-  background: linear-gradient(transparent 95%, rgba(255,0,80,0.08) 100%),
-              linear-gradient(90deg, transparent 95%, rgba(255,0,80,0.08) 100%);
-  background-size: 40px 40px;
-  z-index: -1;
-}
-
-/* профиль */
-.profile {
-  margin-top: 40px;
-}
-
-.avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid #ff0055;
-  box-shadow: 0 0 25px #ff0055;
+  max-width: 420px;
+  text-align: center;
+  padding: 30px 20px;
 }
 
 /* ник */
 h1 {
-  margin: 10px 0 5px;
-  font-size: 28px;
+  font-size: 32px;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
 }
 
 p {
-  color: #aaa;
+  color: #888;
+  margin-bottom: 25px;
+  font-size: 14px;
 }
 
 /* кнопки */
-.buttons {
-  margin-top: 15px;
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+a {
+  text-decoration: none;
 }
 
 .btn {
-  display: inline-block;
-  margin: 8px;
-  padding: 12px 18px;
+  padding: 14px;
   border-radius: 10px;
-  text-decoration: none;
-  color: white;
-  background: #ff0055;
-  box-shadow: 0 0 10px #ff0055;
+  background: #16161d;
+  border: 1px solid #222;
+  color: #fff;
+  font-weight: 500;
   transition: 0.2s;
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  background: #ff2a75;
+  background: #1f1f2a;
+  border-color: #333;
+  transform: translateY(-2px);
 }
 
-/* стрим */
-.stream {
-  width: 90%;
-  max-width: 900px;
-  margin: 40px auto;
-  aspect-ratio: 16/9;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 30px rgba(255,0,85,0.3);
-}
-
-iframe {
-  width: 100%;
-  height: 100%;
+/* акцент */
+.btn.primary {
+  background: #ff0055;
   border: none;
 }
 
-/* футер */
+.btn.primary:hover {
+  background: #ff1a66;
+}
+
+/* низ */
 footer {
-  margin: 40px 0 20px;
+  margin-top: 25px;
+  font-size: 11px;
   color: #555;
-  font-size: 12px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
+<div class="card">
 
-<div class="profile">
-  <!-- ЗАМЕНИ АВАТАР -->
-  <img class="avatar" src="https://i.imgur.com/your-avatar.png" alt="avatar">
+  <h1>qTOUGH</h1>
+  <p>Streamer • Lineage 2</p>
 
-  <h1>Your Nickname</h1>
-  <p>Live Stream Hub</p>
+  <div class="links">
 
-  <div class="buttons">
-    <!-- ЗАМЕНИ ССЫЛКИ -->
-    <a class="btn" href="https://t.me/yourchannel" target="_blank">Telegram</a>
-    <a class="btn" href="https://twitch.tv/yourchannel" target="_blank">Twitch</a>
+    <a href="https://t.me/ToughL2" target="_blank" class="btn primary">
+      Telegram Channel
+    </a>
+
+    <a href="https://www.youtube.com/@qTOUGH" target="_blank" class="btn">
+      YouTube
+    </a>
+
+    <a href="https://www.tiktok.com/@qtough" target="_blank" class="btn">
+      TikTok
+    </a>
+
+    <a href="https://bohpts.com/register?ref=Tough" target="_blank" class="btn">
+      BoHpts x7 Referral
+    </a>
+
   </div>
-</div>
 
-<!-- СТРИМ -->
-<div class="stream">
-  <iframe
-    src="https://player.twitch.tv/?channel=YOUR_CHANNEL&parent=yourname.github.io"
-    allowfullscreen>
-  </iframe>
-</div>
+  <footer>
+    © 2026 qTOUGH
+  </footer>
 
-<footer>
-  © 2026 Stream Page • GitHub Pages
-</footer>
+</div>
 
 </body>
 </html>
