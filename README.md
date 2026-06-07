@@ -1,98 +1,107 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tough Stream</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Stream</title>
 
-<style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#0f0f0f;
-    color:#fff;
-    text-align:center;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: white;
+      text-align: center;
+    }
 
-.container{
-    max-width:700px;
-    margin:50px auto;
-    padding:20px;
-}
+    header {
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      background: #181818;
+    }
 
-.avatar{
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    border:3px solid #9146FF;
-}
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 10px;
+    }
 
-h1{
-    margin:15px 0;
-}
+    .stream {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
 
-.desc{
-    color:#aaa;
-    margin-bottom:30px;
-}
+    .stream iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 
-.btn{
-    display:block;
-    background:#9146FF;
-    color:white;
-    text-decoration:none;
-    padding:15px;
-    margin:10px 0;
-    border-radius:10px;
-    transition:.3s;
-}
+    .links {
+      margin-top: 20px;
+    }
 
-.btn:hover{
-    transform:scale(1.03);
-}
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      background: #ff3d00;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
 
-.footer{
-    margin-top:30px;
-    color:#777;
-}
-</style>
+    .btn:hover {
+      background: #ff5a1f;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
 </head>
 
 <body>
 
+<header>
+  🔴 LIVE STREAM
+</header>
+
 <div class="container">
 
-<img src="avatar.jpg" class="avatar">
+  <!-- СТРИМ -->
+  <div class="stream">
+    <!-- ЗАМЕНИ channel или video -->
+    <iframe
+      src="https://player.twitch.tv/?channel=YOUR_CHANNEL_NAME&parent=localhost"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-<h1>Tough</h1>
-
-<p class="desc">
-Lineage 2 • Стримы • Гайды • PvP
-</p>
-
-<a class="btn" href="https://twitch.tv/ВАШ_КАНАЛ">
-🎥 Twitch</a>
-
-<a class="btn" href="https://youtube.com/@ВАШ_КАНАЛ">
-▶ YouTube</a>
-
-<a class="btn" href="https://discord.gg/ВАШ_INVITE">
-💬 Discord</a>
-
-<a class="btn" href="https://bohpts.com/register?ref=Tough">
-🎁 Реферальная ссылка BoHpts x7</a>
-
-<a class="btn" href="#">
-📺 Источник трансляции №1</a>
-
-<a class="btn" href="#">
-📺 Источник трансляции №2</a>
-
-<div class="footer">
-© 2026 Tough Stream
-</div>
+  <!-- ССЫЛКИ -->
+  <div class="links">
+    <a class="btn" href="https://twitch.tv/YOUR_CHANNEL_NAME" target="_blank">Twitch</a>
+    <a class="btn" href="https://youtube.com" target="_blank">YouTube</a>
+    <a class="btn" href="https://discord.gg" target="_blank">Discord</a>
+  </div>
 
 </div>
+
+<footer>
+  © 2026 Live Stream Page
+</footer>
 
 </body>
 </html>
