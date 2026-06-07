@@ -3,86 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stream Page</title>
+<title>Streamer Page</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  background: radial-gradient(circle at top, #1a1a1a, #000);
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at top, #1b1b1b, #000);
   color: white;
   text-align: center;
 }
 
-/* аватар */
+/* фоновые линии */
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent 95%, rgba(255,0,80,0.08) 100%),
+              linear-gradient(90deg, transparent 95%, rgba(255,0,80,0.08) 100%);
+  background-size: 40px 40px;
+  z-index: -1;
+}
+
+/* профиль */
+.profile {
+  margin-top: 40px;
+}
+
 .avatar {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 3px solid #ff3d00;
-  margin-top: 30px;
-  box-shadow: 0 0 20px #ff3d00;
+  border: 3px solid #ff0055;
+  box-shadow: 0 0 25px #ff0055;
 }
 
 /* ник */
 h1 {
-  margin: 10px 0;
+  margin: 10px 0 5px;
   font-size: 28px;
 }
 
+p {
+  color: #aaa;
+}
+
 /* кнопки */
+.buttons {
+  margin-top: 15px;
+}
+
 .btn {
   display: inline-block;
   margin: 8px;
-  padding: 10px 18px;
+  padding: 12px 18px;
   border-radius: 10px;
-  background: #ff3d00;
-  color: white;
   text-decoration: none;
+  color: white;
+  background: #ff0055;
+  box-shadow: 0 0 10px #ff0055;
   transition: 0.2s;
 }
 
 .btn:hover {
   transform: scale(1.05);
-  background: #ff5722;
+  background: #ff2a75;
 }
 
 /* стрим */
 .stream {
   width: 90%;
   max-width: 900px;
-  margin: 30px auto;
+  margin: 40px auto;
   aspect-ratio: 16/9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(255,0,85,0.3);
 }
 
 iframe {
   width: 100%;
   height: 100%;
-  border-radius: 12px;
   border: none;
-  box-shadow: 0 0 30px rgba(255,61,0,0.4);
+}
+
+/* футер */
+footer {
+  margin: 40px 0 20px;
+  color: #555;
+  font-size: 12px;
 }
 </style>
 </head>
 
 <body>
 
-<img class="avatar" src="https://i.imgur.com/yourimage.png">
+<div class="bg"></div>
 
-<h1>Your Name</h1>
+<div class="profile">
+  <!-- ЗАМЕНИ АВАТАР -->
+  <img class="avatar" src="https://i.imgur.com/your-avatar.png" alt="avatar">
 
-<div>
-  <a class="btn" href="https://twitch.tv/">Twitch</a>
-  <a class="btn" href="https://discord.gg/">Discord</a>
-  <a class="btn" href="https://youtube.com/">YouTube</a>
+  <h1>Your Nickname</h1>
+  <p>Live Stream Hub</p>
+
+  <div class="buttons">
+    <!-- ЗАМЕНИ ССЫЛКИ -->
+    <a class="btn" href="https://t.me/yourchannel" target="_blank">Telegram</a>
+    <a class="btn" href="https://twitch.tv/yourchannel" target="_blank">Twitch</a>
+  </div>
 </div>
 
+<!-- СТРИМ -->
 <div class="stream">
   <iframe
-    src="https://player.twitch.tv/?channel=YOUR_CHANNEL&parent=localhost"
+    src="https://player.twitch.tv/?channel=YOUR_CHANNEL&parent=yourname.github.io"
     allowfullscreen>
   </iframe>
 </div>
+
+<footer>
+  © 2026 Stream Page • GitHub Pages
+</footer>
 
 </body>
 </html>
