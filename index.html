@@ -26,13 +26,12 @@ body {
   background: var(--bg);
   color: var(--text);
   display: flex;
-  align-items: center;
   justify-content: center;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* premium gradient glow background */
+/* background glow */
 .bg {
   position: fixed;
   inset: 0;
@@ -40,23 +39,13 @@ body {
     radial-gradient(circle at 20% 20%, rgba(255,0,85,0.15), transparent 40%),
     radial-gradient(circle at 80% 70%, rgba(122,44,255,0.12), transparent 45%),
     radial-gradient(circle at 50% 100%, rgba(0,200,255,0.08), transparent 50%);
-  filter: blur(0px);
   z-index: -1;
 }
 
-/* floating noise */
-.bg::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity:0.05;
-}
-
-/* card */
+/* container */
 .card {
   width: 100%;
-  max-width: 440px;
+  max-width: 520px;
   text-align: center;
   padding: 34px 22px;
   animation: fadeIn 0.6s ease;
@@ -71,7 +60,6 @@ body {
 h1 {
   font-size: 38px;
   margin: 0;
-  letter-spacing: 1px;
   background: linear-gradient(90deg, #fff, #aaa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -83,15 +71,31 @@ h1 {
   font-size: 13px;
 }
 
-/* buttons container */
+/* STREAM BLOCK */
+.stream {
+  margin-top: 22px;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 30px rgba(255,0,85,0.08);
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* buttons */
 .links {
-  margin-top: 26px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* base button */
 a { text-decoration: none; }
 
 .btn {
@@ -103,24 +107,6 @@ a { text-decoration: none; }
   font-weight: 500;
   transition: 0.25s ease;
   backdrop-filter: blur(14px);
-  position: relative;
-  overflow: hidden;
-}
-
-/* hover glow line */
-.btn::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-  transition: 0.5s;
-}
-
-.btn:hover::before{
-  left:100%;
 }
 
 .btn:hover {
@@ -151,12 +137,20 @@ footer {
 <div class="card">
 
   <h1>qTOUGH</h1>
-  <div class="subtitle">Streamer Hub • Ultra Minimal</div>
+  <div class="subtitle">Streamer Hub • Live Page</div>
+
+  <!-- 🔴 STREAM PLAYER -->
+  <div class="stream">
+    <iframe
+      src="https://player.twitch.tv/?channel=YOUR_CHANNEL&parent=yourname.github.io"
+      allowfullscreen>
+    </iframe>
+  </div>
 
   <div class="links">
 
     <a class="btn primary" href="https://t.me/ToughL2" target="_blank">
-      Telegram Channel
+      Название Телеграм канал
     </a>
 
     <a class="btn" href="https://www.youtube.com/@ToughW8" target="_blank">
@@ -167,7 +161,6 @@ footer {
       TikTok
     </a>
 
-    <!-- 🔥 renamed block -->
     <a class="btn" href="https://bohpts.com/register?ref=Tough" target="_blank">
       BoHpts Referal Link
     </a>
