@@ -11,90 +11,92 @@ body {
   font-family: Arial;
   background: #0b0b0f;
   color: white;
+  text-align: center;
 }
 
-/* header */
-.header {
-  text-align: center;
+.container {
+  max-width: 900px;
+  margin: 40px auto;
   padding: 20px;
-  font-size: 22px;
+}
+
+.stream {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #222;
+  box-shadow: 0 0 25px rgba(255,0,80,0.15);
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.status {
+  margin: 15px 0;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.live {
+  color: #ff3b3b;
   font-weight: bold;
 }
 
-/* layout */
-.wrapper {
-  display: flex;
-  gap: 12px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-/* stream */
-.stream {
-  flex: 2;
-  aspect-ratio: 16/9;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #222;
-}
-
-.stream iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* chat */
-.chat {
-  flex: 1;
-  min-width: 320px;
-  height: 600px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #222;
-}
-
-.chat iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* mobile */
-@media (max-width: 900px) {
-  .wrapper {
-    flex-direction: column;
-  }
-  .chat {
-    height: 450px;
-  }
+.offline {
+  color: #777;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">qTOUGH • LIVE STREAM</div>
+<div class="container">
 
-<div class="wrapper">
+  <h1>qTOUGH</h1>
+  <div class="status" id="status">Проверка стрима...</div>
 
-  <!-- STREAM -->
-  <div class="stream">
-    <iframe id="ytStream"
-      src="https://www.youtube.com/embed/F5EKjldpBno"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- CHAT -->
-  <div class="chat">
-    <iframe id="ytChat"
-      src="https://www.youtube.com/live_chat?v=F5EKjldpBno&embed_domain=yourname.github.io">
-    </iframe>
+  <div class="stream" id="player" style="display:none;">
+    <iframe id="ytframe" allowfullscreen></iframe>
   </div>
 
 </div>
+
+<script>
+const API_KEY = "YOUR_YOUTUBE_API_KEY";
+const CHANNEL_ID = "UCxxxxxxxxxxxxxxxx"; // <-- нужно ID канала
+
+async function checkLive() {
+  try {
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&eventType=live&type=video&key=${API_KEY}`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (data.items && data.items.length > 0) {
+      const videoId = data.items[0].id.videoId;
+
+      document.getElementById("status").innerHTML =
+        "🔴 <span class='live'>LIVE NOW</span>";
+
+      document.getElementById("player").style.display = "block";
+      document.getElementById("ytframe").src =
+        `https://www.youtube.com/embed/${videoId}`;
+    } else {
+      document.getElementById("status").innerHTML =
+        "⚫ <span class='offline'>OFFLINE</span>";
+    }
+
+  } catch (e) {
+    document.getElementById("status").innerText = "Ошибка загрузки стрима";
+  }
+}
+
+checkLive();
+</script>
 
 </body>
 </html>
